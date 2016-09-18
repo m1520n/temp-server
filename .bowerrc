@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "postinstall": "gulp wiredep"
+  },
+  "directory": "public/bower_components",
+
+  "resolvers": [
+    "bower-npm-resolver"
+  ]
+}
