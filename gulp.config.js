@@ -7,9 +7,9 @@ module.exports = function() {
   const BUILD_FONTS = BUILD + 'fonts/';
   const BUILD_IMAGES = BUILD + 'images/';
   const FONTS = PUBLIC_DIR + 'bower_components/font-awesome/fonts/**/*.*';
-  const HTML_TEMPLATES = PUBLIC_DIR + './tmp/';
+  const HTML_TEMPLATES = PUBLIC_DIR + '**/*.html';
   const IMAGES = PUBLIC_DIR + './images/**/*.*';
-  const TEMP = './tmp';
+  const TEMP = './tmp'; //I have no templates, components at the moment so it woll be not used
 
   let config = {
     /**
@@ -50,7 +50,7 @@ module.exports = function() {
     templateCache: {
       file: 'templates.js',
       options: {
-        module: 'app',
+        module: 'myApp',
         standAlone: false,
         root: './public/'
       }
