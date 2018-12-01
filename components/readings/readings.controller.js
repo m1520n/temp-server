@@ -2,7 +2,7 @@ const Reading = require('./readings.model')
 
 module.exports = {
   getReadings: async (req, res) => {
-    const { limit } = req.params;
+    const { limit } = req.query;
     const readings = await Reading.find({}).sort({ createdAt: -1 }).limit(limit || 100)
 
     res.json({
