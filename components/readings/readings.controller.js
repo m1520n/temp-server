@@ -12,8 +12,7 @@ module.exports = {
 
   insertReading: async (req, res) => {
     const reading = new Reading(req.body)
-    const nowSeconds = Math.floor(new Date().getTime() / 1000)
-    reading.created = nowSeconds
+    reading.created = new Date()
 
     await reading.save()
 

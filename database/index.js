@@ -6,7 +6,8 @@ const config = require('../config')
 const DB_URI = config.DATABASE_URI[process.env.NODE_ENV] || config.DATABASE_URI.dev
 
 mongoose.connect(`mongodb://${DB_URI}`, {
-  useNewUrlParser: true
+  useNewUrlParser: true,
+  useCreateIndex: true,
 })
 
 mongoose.connection.on('connected', () => {
