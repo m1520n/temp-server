@@ -10,7 +10,7 @@ router.route('/')
   .get(getReadings)
   .post(insertReading)
 
-router.router('/latest')
+router.route('/latest')
   .get(getLatestReading)
 
 module.exports = router
