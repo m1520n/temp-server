@@ -17,7 +17,7 @@ module.exports = {
       success: true,
       reading
     })
-  }
+  },
 
   insertReading: async (req, res) => {
     const reading = new Reading(req.body)
