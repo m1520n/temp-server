@@ -12,7 +12,6 @@ module.exports = {
 
   insertReading: async (req, res) => {
     const reading = new Reading(req.body)
-    reading.created = new Date()
 
     await reading.save()
 
