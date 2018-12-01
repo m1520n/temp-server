@@ -2,13 +2,22 @@ const Reading = require('./readings.model')
 
 module.exports = {
   getReadings: async (req, res) => {
-    const readings = await Reading.find({})
+    const readings = await Reading.find({}).sort({ date: -1 })
 
     res.json({
       success: true,
       readings
     })
   },
+
+  getLatestReading: async (req, res) => {
+    const reading = await Reading.findOne({}).sort({ date: -1 })
+
+    res.json({
+      success: true,
+      reading
+    })
+  }
 
   insertReading: async (req, res) => {
     const reading = new Reading(req.body)
