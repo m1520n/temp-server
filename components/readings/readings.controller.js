@@ -3,14 +3,14 @@ const Reading = require('./readings.model')
 module.exports = {
   getReadings: async (req, res) => {
     const { limit } = req.query;
-    const readings = await Reading
+    const sensors = await Reading
       .aggregate([
         {
           $sort: { createdAt: -1 }
         },
         {
           $group: {
-            _id: { sensorId: '$sensorId', },
+            _id: '$sensorId',
             readings: {
               $push: {
                 temperature: '$temperature',
@@ -22,7 +22,7 @@ module.exports = {
         {
           $project: {
             _id: 0,
-            sensor: '$sensorId',
+            sensor: '$_id',
             readings: {
               $slice: ['$readings', 0, limit || 50]
             },
@@ -32,8 +32,8 @@ module.exports = {
 
     res.json({
       success: true,
-      readings,
-      count: readings.length,
+      sensors,
+      count: sensors.length,
     })
   },
 
