@@ -11,7 +11,7 @@ module.exports = {
         {
           $group: {
             _id: '$sensorId',
-            readings: { $push: '$readings' },
+            readings: { $push: '$temperature' },
           },
         },
         {
@@ -19,7 +19,7 @@ module.exports = {
             _id: 0,
             sensor: '$sensorId',
             readings: {
-              $slice: ['$temperature', 0, limit || 50]
+              $slice: ['$readings', 0, limit || 50]
             },
           },
         }
