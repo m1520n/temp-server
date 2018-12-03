@@ -51,7 +51,7 @@ module.exports = {
         },
         {
           $group: {
-            sensorId: '$sensorId',
+            _id: '$sensorId',
             lastReading: { $last: '$temperature' }
           }
         }
