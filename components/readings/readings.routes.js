@@ -4,7 +4,8 @@ const {
   getReadings,
   insertReading,
   getReadingsById,
-  getLatestReadingsById
+  getLatestReadingsById,
+  getLatestReadingsForSensors
 } = require('./readings.controller')
 
 router.route('/')
