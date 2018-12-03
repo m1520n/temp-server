@@ -10,7 +10,10 @@ router.route('/')
   .get(getReadings)
   .post(insertReading)
 
-router.route('/latest')
-  .get(getLatestReading)
+router.route('/:id')
+  .get(getReadingsById)
+
+router.route('/latest/:id')
+  .get(getLatestReadings)
 
 module.exports = router
