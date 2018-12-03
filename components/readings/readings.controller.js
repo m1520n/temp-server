@@ -9,9 +9,6 @@ module.exports = {
           $match: { sensor: { $ne: null } }
         },
         {
-          $sort: { createdAt: -1 }
-        },
-        {
           $group: {
             _id: '$sensorId',
             readings: {
@@ -21,6 +18,9 @@ module.exports = {
               },
             },
           },
+        },
+        {
+          $sort: { createdAt: -1 }
         },
         {
           $project: {
