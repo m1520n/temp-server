@@ -47,15 +47,13 @@ module.exports = {
     const readings = await Reading
       .aggregate([
         {
-          $group: {
-            _id: 'sensorId',
-          }
-        },
-        {
           $sort: { createdAt: -1 }
         },
         {
-          $limit: 1
+          $group: {
+            _id: 'sensorId',
+            lastReading: { $last: 'createdAt' }
+          }
         }
       ])
 
