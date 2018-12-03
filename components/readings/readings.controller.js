@@ -18,7 +18,7 @@ module.exports = {
               _id: null,
               sensor: '$sensorId',
               readings: {
-                $slice: ['$temperature', 0, 10]
+                $slice: ['$temperature', 0, limit || 50]
               },
             },
           },
