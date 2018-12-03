@@ -52,10 +52,12 @@ module.exports = {
         {
           $group: {
             _id: '$sensorId',
-            lastReading: { $last: '$temperature' }
+            sensor: { $last: '$sensor' }
+            temperature: { $last: '$temperature' }
+            date: { $last: '$createdAt' }
           }
         }
-      ]).exec()
+      ])
 
     res.json({
       success: true,
