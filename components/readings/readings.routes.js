@@ -12,13 +12,13 @@ router.route('/')
   .get(getReadings)
   .post(insertReading)
 
-router.route('/:id')
-  .get(getReadingsById)
-
 router.route('/latest')
   .get(getLatestReadingsForSensors)
 
 router.route('/latest/:id')
   .get(getLatestReadingsById)
+
+router.route('/:id')
+  .get(getReadingsById)
 
 module.exports = router

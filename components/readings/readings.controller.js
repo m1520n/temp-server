@@ -44,7 +44,7 @@ module.exports = {
   },
 
   getLatestReadingsForSensors: async (req, res) => {
-    const readings= await Reading
+    const readings = await Reading
       aggregate([
         {
           $group: {
