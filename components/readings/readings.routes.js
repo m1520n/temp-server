@@ -14,6 +14,9 @@ router.route('/')
 router.route('/:id')
   .get(getReadingsById)
 
+router.route('/latest')
+  .get(getLatestReadingsForSensors)
+
 router.route('/latest/:id')
   .get(getLatestReadingsById)
 
