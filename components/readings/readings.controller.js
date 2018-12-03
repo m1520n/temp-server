@@ -6,6 +6,9 @@ module.exports = {
     const sensors = await Reading
       .aggregate([
         {
+          $match: { sensor: { $ne: null } }
+        },
+        {
           $sort: { createdAt: -1 }
         },
         {
