@@ -13,9 +13,11 @@ module.exports = {
                 temperature: '$temperature',
                 createdAt: '$createdAt',
               },
-              $sort: { createdAt: -1 }
             },
           },
+        },
+        {
+          $sort: { 'readings.createdAt': -1 }
         },
         {
           $project: {
