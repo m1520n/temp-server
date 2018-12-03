@@ -17,7 +17,8 @@ module.exports = {
 
   getReadingsById: async (req, res) => {
     const { id } = req.params;
-    console.log(id);
+    const { limit } = req.query;
+
     const readings = await Reading
       .find({ sensorId: id })
       .sort({ createdAt: -1 })
