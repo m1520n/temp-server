@@ -10,7 +10,7 @@ module.exports = {
         },
         {
           $group: {
-            _id: '$sensorId',
+            _id: { sensorId: '$sensorId', },
             readings: {
               $push: {
                 temperature: '$temperature',
