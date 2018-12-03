@@ -55,7 +55,7 @@ module.exports = {
             sensor: { $last: '$sensor' },
             temperature: { $last: '$temperature' },
             date: { $last: '$createdAt' },
-          }.
+          },
         },
       ])
 
