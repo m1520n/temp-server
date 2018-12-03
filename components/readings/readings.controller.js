@@ -13,7 +13,7 @@ module.exports = {
             _id: '$sensorId',
             readings: { $push: '$ROOT' },
           },
-        }
+        },
         {
           $project: {
             _id: null,
