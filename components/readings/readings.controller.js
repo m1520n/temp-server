@@ -30,7 +30,7 @@ module.exports = {
     })
   },
 
-  getLatestReadingById: async (req, res) => {
+  getLatestReadingsById: async (req, res) => {
     const { id } = req.params;
     const reading = await Reading
       .findOne({ sensorId: id })
