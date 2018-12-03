@@ -43,6 +43,30 @@ module.exports = {
     })
   },
 
+  getLatestReadingsForSensors: async (req, res) => {
+    const readings= await Reading
+      aggregate([
+        {
+          $group: {
+            _id: 'sensorId',
+          }
+        },
+        {
+          $sort: { createdAt: -1 }
+        },
+        {
+          $limit: 1
+        }
+      ])
+
+      console.log(readings);
+
+    res.json({
+      success: true,
+      readings
+    })
+  },
+
   insertReading: async (req, res) => {
     const reading = new Reading(req.body)
 
