@@ -45,7 +45,7 @@ module.exports = {
 
   getLatestReadingsForSensors: async (req, res) => {
     const readings = await Reading
-      aggregate([
+      .aggregate([
         {
           $group: {
             _id: 'sensorId',
