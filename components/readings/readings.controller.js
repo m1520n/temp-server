@@ -13,13 +13,13 @@ module.exports = {
             _id: '$sensorId',
             readings: { $push: '$ROOT' },
           },
-          {
-            $project: {
-              _id: null,
-              sensor: '$sensorId',
-              readings: {
-                $slice: ['$temperature', 0, limit || 50]
-              },
+        }
+        {
+          $project: {
+            _id: null,
+            sensor: '$sensorId',
+            readings: {
+              $slice: ['$temperature', 0, limit || 50]
             },
           },
         },
