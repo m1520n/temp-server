@@ -16,7 +16,7 @@ module.exports = {
         },
         {
           $project: {
-            _id: null,
+            _id: 0,
             sensor: '$sensorId',
             readings: {
               $slice: ['$temperature', 0, limit || 50]
