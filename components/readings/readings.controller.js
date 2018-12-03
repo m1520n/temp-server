@@ -17,7 +17,7 @@ module.exports = {
           },
         },
         {
-          $sort: { 'readings.createdAt': -1 }
+          $sort: { 'readings.createdAt': 1 }
         },
         {
           $project: {
