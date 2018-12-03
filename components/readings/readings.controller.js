@@ -17,6 +17,7 @@ module.exports = {
 
   getReadingsById: async (req, res) => {
     const { id } = req.params;
+
     const readings = await Reading
       .find({ sensorId: id })
       .sort({ createdAt: -1 })
@@ -32,7 +33,8 @@ module.exports = {
   getLatestReadingById: async (req, res) => {
     const { id } = req.params;
     const reading = await Reading
-      .findOne({ sensorId: id }).sort({ createdAt: -1 })
+      .findOne({ sensorId: id })
+      .sort({ createdAt: -1 })
 
     res.json({
       success: true,
