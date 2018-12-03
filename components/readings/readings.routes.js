@@ -3,7 +3,8 @@ const router = require('express-promise-router')()
 const {
   getReadings,
   insertReading,
-  getLatestReading,
+  getReadingsById,
+  getLatestReadingsById
 } = require('./readings.controller')
 
 router.route('/')
@@ -14,6 +15,6 @@ router.route('/:id')
   .get(getReadingsById)
 
 router.route('/latest/:id')
-  .get(getLatestReadings)
+  .get(getLatestReadingsById)
 
 module.exports = router
