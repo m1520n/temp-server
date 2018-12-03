@@ -6,7 +6,7 @@ module.exports = {
     const sensors = await Reading
       .aggregate([
         {
-          $match: { sensor: { $ne: null } }
+          $sort: { createdAt: -1 }
         },
         {
           $group: {
@@ -20,14 +20,11 @@ module.exports = {
           },
         },
         {
-          $sort: { 'readings.createdAt': 1 }
-        },
-        {
           $project: {
             _id: 0,
             sensor: '$_id',
             readings: {
-              $slice: ['$readings', 0, limit || 50]
+              $slice: ['$readings', limit || 50]
             },
           },
         }
