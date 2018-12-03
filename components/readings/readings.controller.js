@@ -55,7 +55,7 @@ module.exports = {
             lastReading: { $last: 'createdAt' }
           }
         }
-      ])
+      ]).exec()
 
       console.log(readings);
 
