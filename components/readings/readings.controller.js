@@ -22,20 +22,9 @@ module.exports = {
               $slice: ['$temperature', 0, limit || 50]
             },
           },
-        },
-      .find({})
-      .sort({ createdAt: -1 })
-      .limit((limit && parseInt(limit)) || 0)
+        }
+      ])
 
-      $group: {
-        _id: null, // group everything into one single bucket
-        docs: { $push: "$$ROOT" } // push all documents into an array (this will be massive for huge collections...)
-    }
-}, {
-    $project: {
-        "docsTop10": { $slice: [ "$docs", 10 ] }, // take the first 10 elements from the ASC sorted array
-        "docsBottom10": { $reverseArray: { $slice: [ "$docs", -10 ] } } // take the last 10 elements from the array but reverse their order
-    }
     res.json({
       success: true,
       readings,
