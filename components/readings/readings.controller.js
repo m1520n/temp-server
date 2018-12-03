@@ -11,7 +11,7 @@ module.exports = {
         {
           $group: {
             _id: '$sensorId',
-            '$_id': {
+            readings: {
               $push: {
                 temperature: '$temperature',
                 createdAt: '$createdAt',
