@@ -6,6 +6,9 @@ module.exports = {
     const sensors = await Reading
       .aggregate([
         {
+          $sort: { '$createdAt': -1 }
+        },
+        {
           $group: {
             _id: '$sensorId',
             readings: {
@@ -15,9 +18,6 @@ module.exports = {
               },
             },
           },
-        },
-        {
-          $sort: { 'readings.createdAt': 1 }
         },
         {
           $project: {
