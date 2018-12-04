@@ -24,7 +24,7 @@ module.exports = {
             _id: 0,
             sensor: '$_id',
             readings: {
-              $slice: ['$readings', limit || 50]
+              $slice: ['$readings', parseInt(limit) || 50]
             },
           },
         }
