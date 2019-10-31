@@ -88,7 +88,7 @@ module.exports = {
 
   insertReading: async (req, res) => {
     const reading = new Reading(req.body)
-    console.log(reading);
+    console.log(req.body);
     await reading.save()
 
     res.json({
