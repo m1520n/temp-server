@@ -3,7 +3,7 @@ const Schema = mongoose.Schema
 
 const readingSchema = new mongoose.Schema({
   temperature: { type: Number, required: true },
-  humidity: { Type: Number},
+  humidity: { type: Number},
   sensor: { type: String, required: true },
   sensorId: { type: Number, required: true },
   createdAt: { type: Date, expires: 86400000, default: Date.now },
