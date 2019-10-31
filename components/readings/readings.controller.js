@@ -14,6 +14,7 @@ module.exports = {
             readings: {
               $push: {
                 temperature: '$temperature',
+                humidity: '$humidity',
                 createdAt: '$createdAt',
               },
             },
@@ -73,6 +74,7 @@ module.exports = {
             _id: '$sensorId',
             sensor: { $last: '$sensor' },
             temperature: { $last: '$temperature' },
+            humidity: { $last: '$humidity' },
             date: { $last: '$createdAt' },
           },
         },
