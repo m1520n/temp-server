@@ -42,8 +42,7 @@ module.exports = {
     const { id } = req.params;
     const { limit } = req.query;
 
-    const readings = await Reading
-      .find({ sensorId: id })
+    const readings = await Reading.find({ sensorId: id })
       .sort({ createdAt: -1 })
       .limit((limit && parseInt(limit)) || 0)
 
@@ -56,8 +55,7 @@ module.exports = {
 
   getLatestReadingsById: async (req, res) => {
     const { id } = req.params;
-    const reading = await Reading
-      .findOne({ sensorId: id })
+    const reading = await Reading.findOne({ sensorId: id })
       .sort({ createdAt: -1 })
 
     res.json({
@@ -67,21 +65,20 @@ module.exports = {
   },
 
   getLatestReadingsForSensors: async (req, res) => {
-    const readings = await Reading
-      .aggregate([
-        {
-          $group: {
-            _id: '$sensorId',
-            sensor: { $last: '$sensor' },
-            temperature: { $last: '$temperature' },
-            humidity: { $last: '$humidity' },
-            date: { $last: '$createdAt' },
-          },
+    const readings = await Reading.aggregate([
+      {
+        $group: {
+          _id: '$sensorId',
+          sensor: { $last: '$sensor' },
+          temperature: { $last: '$temperature' },
+          humidity: { $last: '$humidity' },
+          date: { $last: '$createdAt' },
         },
-        {
-          $sort: { createdAt: -1 }
-        },
-      ])
+      },
+      {
+        $sort: { createdAt: -1 }
+      },
+    ])
 
     res.json({
       success: true,
